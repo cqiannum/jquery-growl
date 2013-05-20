@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>growl</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/prism.css">
+        <link rel="stylesheet" href="css/main.css">       
+        <link rel="stylesheet" href="css/growl.css">
+
+        
+        <script src="js/vendor/jquery-1.9.1.min.js"></script>
+        <script src="js/vendor/jquery.toc.js"></script>
+        <script src="js/vendor/prism.js"></script>
+        <script src="js/vendor/bootstrap.js"></script>
+
+        <script src="../src/jquery.growl.js"></script>
+    </head>
+    <style type="text/css">
+
+        body {
+            background: url("./img/linen.png") repeat scroll 0 0 #1C2029;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            background: radial-gradient(circle, rgba(100, 100, 100, 0.2), rgba(0, 0, 0, 0.9)) repeat scroll 0 0 transparent;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+        }
+
+        #wrap:after {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)) repeat scroll 0 0 transparent;
+            content: "";
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .msg-box {
+            background: linear-gradient(#FFFFFF, #DBDBDB) repeat scroll 0 0 transparent;
+            border-radius: 6px 6px 6px 6px;
+            box-shadow: 0 -1px 0 white inset, 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        ul.menu {
+            background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);
+            border: 1px solid #555555;
+            border-radius: 4px 4px 4px 4px;
+            box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.4) inset;
+            left: 50%;
+            margin-left: -160px;
+            margin-top: -176px;
+            padding: 0;
+            position: absolute;
+            top: 50%;
+            width: 320px;
+        }
+        ul.menu li {
+            border-bottom: 1px solid #555555;
+            color: white;
+            cursor: pointer;
+            font: 12px HelveticaNeue,Helvetica,Arial,sans-serif;
+            list-style: none outside none;
+            padding: 12px 20px;
+            text-shadow: 0 1px 2px black;
+        }
+        ul.menu li:nth-child(2n) {
+            background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+        }
+        ul.menu li:last-child {
+            border: medium none;
+        }
+        ul.menu li:hover {
+            background: none repeat scroll 0 0 white;
+            color: black;
+            text-shadow: none;
+            z-index: 2;
+        }
+
+        .growl-close {
+            background-color: green;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        
+    </style>
+
+<body>
+<!--[if lt IE 7]>
+    <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+
+<div id="wrap">
+    <div id="inner"></div>
+    <div class="show-list">
+        <ul class="menu">
+            <li class="add">add new message</li>
+            <li>position</li>
+            <li>count</li>
+        </ul>
+    </div>
+    <div class="msg-box"></div>
+</div>
+
+<script type="text/javascript">
+        var growl = new $.growl($('.msg-box'));
+
+        growl.add({
+            src: 'img/avator.jpg',
+            content: 'this is my info this is my info this is my info this is my info'
+        });
+
+        $('.add').on('click', function() {
+            growl.add({
+                src: 'img/avator.jpg',
+                content: 'this is my info this is my info this is my info this is my info'
+            });
+        })
+
+    </script>
+</body>
+</html>
