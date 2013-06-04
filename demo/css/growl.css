@@ -1,0 +1,38 @@
+.growl-wrap .msgBox {
+  overflow: hidden;
+  background-color: #555;
+  position: relative;
+}
+
+.growl-wrap .msgBox .msgBox-icon {
+  display: inline-block;
+  float: left;
+  width: 150px;
+  height: 80px;
+}
+
+.growl-wrap .msgBox .msgBox-content {
+  display: inline-block;
+  float: left;
+  width: 100px;
+  margin-right: 40px;
+}
+
+.growl-wrap .msgBox .growl-close {
+  border-radius: 5px;
+}
+
+.growl-slide {
+  -webkit-transition: height 0.5s ease-in;
+  -moz-transition: height 0.5s ease-in;
+  -o-transition: height 0.5s ease-in;
+  transition: height 0.5s ease-in;
+}
+
+.growl-wrap .msgBox.growl-success {
+  background-color: green;
+}
+
+.growl-wrap .msgBox.growl-success .growl-close {
+  background-color: #555;
+}

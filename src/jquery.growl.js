@@ -52,7 +52,7 @@
             this.$element.css(position);
             this.$element.appendTo($('body'));
         },
-        add: function(data) {
+        add: function(data, type) {
             var $message,
                 timer,
                 self = this;
@@ -66,6 +66,10 @@
             if (this.count >= this.options.count) {
                 this.cache.push(data);
                 return false;
+            }
+
+            if (type) {
+                $message.addClass(this.namespace + '-' + type);
             }
 
             // bound close button
@@ -94,7 +98,12 @@
             this.count++;
 
             // add message to wrap
-            $message.css({display: 'none'}).prependTo(this.$element);
+            if (this.options.append === true) {
+                $message.css({display: 'none'}).appendTo(this.$element);
+            } else {
+                $message.css({display: 'none'}).prependTo(this.$element);
+            }
+            
             
             // transitions
             this.effects[this.options.effect].open.call(this, $message);
@@ -109,6 +118,7 @@
             // a deferred object, alse need return a deferred objec
             function close(dtd) {
                 self.effects[self.options.effect].close.call(self, $message, dtd);
+                return dtd;
             }
 
             $.when(close(dtd)).done(function() {
@@ -124,7 +134,7 @@
                 }
             });           
         }
-    }
+    };
 
     // transition effects
     Growl.prototype.effects = {
@@ -154,6 +164,44 @@
 
                 dtd.resolve();
             }
+        },
+        fade: {
+            open: function($element) {
+                if (this.$element.children().length > 0) {
+                    this.$element.addClass(this.namespace + '-slide');
+                }
+
+                $element.css({
+                    opacity: 0,
+                    display: 'block'
+                });
+
+                console.log(this);
+
+                $element.animate({opacity: 1}, {
+                    duration: this.options.duration,
+                    complete: function(){}
+                });
+            },
+            close: function($element, dtd) {
+                var self = this;
+                $element.animate({opacity: 0}, {
+                    duration: this.options.duration,
+                    complete: function() {
+                        $element.css({
+                            display: 'none'
+                        });
+
+                        console.log('close')
+
+                        if (self.$element.children().length === 0) {
+                            self.$element.removeClass(self.namespace + '-slide');
+                        }
+
+                        dtd.resolve();
+                    }
+                });
+            }
         }
     };
 
@@ -166,7 +214,9 @@
         count: 5,  // the max num of message showed in the wrap
         autoClose: false,  // meassage can auto close after some seconds
         delay: 3000, // set waiting time
-        duration: 300, // set animate time
+        duration: 600, // set animate time
+
+        append: false, // set the direction to add the message
 
         position: {
             bottom: 0,
@@ -205,6 +255,6 @@
                 }
             });
         }
-    }
+    };
 
 }(window, document, jQuery));

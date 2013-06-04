@@ -51,11 +51,11 @@
             z-index: -1;
         }
 
-        .msg-box {
+        /*.msg-box {
             background: linear-gradient(#FFFFFF, #DBDBDB) repeat scroll 0 0 transparent;
             border-radius: 6px 6px 6px 6px;
             box-shadow: 0 -1px 0 white inset, 0 4px 30px rgba(0, 0, 0, 0.5);
-        }
+        }*/
 
         ul.menu {
             background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);
@@ -97,9 +97,7 @@
             position: absolute;
             right: 0;
             top: 0;
-        }
-
-        
+        }      
     </style>
 
 <body>
@@ -112,11 +110,13 @@
     <div class="show-list">
         <ul class="menu">
             <li class="add">add new message</li>
-            <li>position</li>
+            <li class="top">position-top</li>
+            <li class="success">success type</li>
             <li>count</li>
         </ul>
     </div>
     <div class="msg-box"></div>
+    <div class="msg-top"></div>
 </div>
 
 <script type="text/javascript">
@@ -132,7 +132,33 @@
                 src: 'img/avator.jpg',
                 content: 'this is my info this is my info this is my info this is my info'
             });
+        });
+
+        var growl1 = new $.growl($('.msg-top'), {
+            effect: 'fade',
+            position: {
+                top: 10,
+                right: 50
+            },
+            append: true
+        });
+
+        $('.top').on('click', function() {
+            growl1.add({
+                src: 'img/avator.jpg',
+                content: 'this is my info this is my info this is my info this is my info'
+            });
+        });
+
+        $('.success').on('click', function() {
+            growl1.add({
+                src: 'img/avator.jpg',
+                content: 'this is another type'
+            }, 'success');
         })
+
+
+
 
     </script>
 </body>
