@@ -48,12 +48,18 @@ var growl = new $.growl($('.msg-box'));
             src: 'img/avator.jpg',
             content: 'this is my info this is my info this is my info this is my info'
         });
-        $('.add').on('click', function() {
-            growl.add({
-                src: 'img/avator.jpg',
-                content: 'this is my info this is my info this is my info this is my info'
-            });
+```
+
+you can add events like this for an element
+
+```javascript
+$('.add').on('click', function() {
+        growl.add({
+            src: 'img/avator.jpg',
+            content: 'this is my info this is my info this is my info this is my info'
         });
+     });
+
 ```
 
 Or initialize growl with custom settings:
@@ -87,76 +93,58 @@ the most important thing is you should set the parameters for <code>add()</code>
 
 ## Settings
 
-<table>
-    <thead>
-        <tr>
-            <th>Property</th>
-            <th>Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>namespace</td>
-            <td>'growl'</td>
-            <td>Optional property, set a namspace for css class, for example, we have <code>.growl_active</code> class for active effect, if namespace set to 'as-growl', then it will be <code>.as-growl_active</code></td>
-        </tr>
-        <tr>
-            <td>skin</td>
-            <td>'simple'</td>
-            <td>Optional property, set transition effect, it works after you load specified skin file</td>
-        </tr>
-        <tr>
-            <td>effect</td>
-            <td>insertIn</td>
-            <td>Optional property, or fade, change the way of the message box pop-up</td>
-        </tr>
-        <tr>
-            <td>count</td>
-            <td>5</td>
-            <td>Optional property, the max num of message showed in the wrap</td>
-        </tr>
-        <tr>
-            <td>autoClose</td>
-            <td>false</td>
-            <td>Optional property, if true, message can auto close after some seconds</td>
-        </tr>
-        <tr>
-            <td>delay</td>
-            <td>3000</td>
-            <td>Optional property, set the waiting time</td>
-        </tr>
-        <tr>
-            <td>duration</td>
-            <td>6000</td>
-            <td>Optional property, set the animate time</td>
-        </tr>
-        <tr>
-            <td>append</td>
-            <td>false</td>
-            <td>Optional property, set the direction to add the message</td>
-        </tr>
-        <tr>
-            <td>position</td>
-            <td><code>bottom: 0,left: 50</code></td>
-            <td>Optional property, set the position of message box</td>
-        </tr>
-        <tr>
-            <td>parse</td>
-            <td><code>function(data, tpl) {
-            var $tpl = $(tpl);
-            $tpl.find('.msgBox-icon img').attr('src', data.src);
-            $tpl.find('.msgBox-content').text(data.content);
-            return $tpl;}</code></td>
-            <td>Optional property, a function, set the message box imgaes and content</td>
-        </tr>
-		<tr>
-            <td>template</td>
-            <td><code><div class="msgBox"><a href="#" class="msgBox-icon"><img src="" /></a><div class="msgBox-content"></div><span class="growl-close">close</span></div></code></td>
-            <td>Optional property, the template of message box</td>
-        </tr>    
-    </tbody>
-</table>
+```javascript
+{   
+    // Optional property, Set a namespace for css class
+    namespace: 'namespace',
+
+    // Optional property, Optional property, set transition effect, 
+    //it works after you load specified skin file
+    skin: simple, 
+
+    // Optional property, change the way of the message box pop-up
+    effect: 'insertIn', // fade
+
+    // Optional property,  the max num of message showed in the wrap
+    count: 5,
+
+     // Optional property,if true, message can auto close after some
+     // seconds  
+    autoClose: false,
+
+    // Optional property, set the waiting time
+    delay: 3000,
+
+    // Optional property, set the animate time
+    duration: 600,
+
+    // Optional property, set the direction to add the message 
+    append: false, 
+
+    // Optional property, set the position of message box
+    position: {
+		bottom: 0,
+		left: 50
+    },
+
+    // Optional property, a function, set the message box imgaes and 
+	//content
+    parse: function(data, tpl) {
+        var $tpl = $(tpl);
+        $tpl.find('.msgBox-icon img').attr('src', data.src);
+        $tpl.find('.msgBox-content').text(data.content);
+        return $tpl;
+    },
+
+    // Optional property,  the template of message box
+    template: '<div class="msgBox">
+					<a href="#" class="msgBox-icon"><img src="" /></a>
+					<div class="msgBox-content"></div>
+					<span class="growl-close">close</span>
+			   </div>'
+    }
+}
+```
 
 ## Public methods
 
@@ -164,16 +152,20 @@ jquery tabs has different methods , we can use it as below :
 ```javascript
 
 // add a message box
-$(".msg-box").growl("add");
+var growl = new $.growl($('.msg-box'));
+	growl("add");
 
 // remove a message box
-$(".msg-box").growl("remove");
+var growl = new $.growl($('.msg-box'));
+	growl("remove");
 
 // add a disable class to message box
-$("msg-box").growl("enable");
+var growl = new $.growl($('.msg-box'));
+	growl("enable");
 
 // remove the disable class
-$(".msg-box").growl("disable");
+var growl = new $.growl($('.msg-box'));
+	growl("disable");
 
 ```
 
@@ -191,9 +183,8 @@ Mobile browsers (like Opera mini, Chrome mobile, Safari mobile, Android browser 
 
 | Version | Notes                                                            |
 |---------|------------------------------------------------------------------|
-|   |                    |
-|   |                    |
 |     ... | ...                                                              |
+
 
 
 ## Author
