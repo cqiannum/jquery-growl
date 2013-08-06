@@ -7,7 +7,7 @@ Download: <a href="https://github.com/amazingSurge/jquery-growl/archive/master.z
 
 ## Features
 
-* **different positions** — growl provides 9 position for message box to display
+* **different positions** — growl provides 2 position for message box to display
 * **Lightweight size** — 1 kb gzipped
 
 ## Dependencies
@@ -83,7 +83,11 @@ var growl = new $.growl($('.msg-box'), {
             $tpl.find('.msgBox-content').text(data.content);
             return $tpl;
         },
-        template: '<div class="msgBox"><a href="#" class="msgBox-icon"><img src="" /></a><div class="msgBox-content"></div><span class="growl-close">close</span></div>'
+        template: '<div class="msgBox">
+						<a href="#" class="msgBox-icon"><img src="" /></a>
+						<div class="msgBox-content"></div>
+						<span class="growl-close">close</span>
+				   </div>'
 });
 ```
 
