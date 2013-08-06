@@ -7,7 +7,8 @@ Download: <a href="https://github.com/amazingSurge/jquery-growl/archive/master.z
 
 ## Features
 
-* **different positions** — growl provides 2 position for message box to display
+* **different positions** — growl provides 2 positions for message box to display
+* **different type** — growl provides 2 types for message box to display
 * **Lightweight size** — 1 kb gzipped
 
 ## Dependencies
