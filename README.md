@@ -83,7 +83,6 @@ var growl = new $.growl($('.msg-box'), {
 
 the most important thing is you should set the parameters for <code>add()</code> to let plugin find his images and contents
 
-```
 
 
 ## Settings
@@ -188,9 +187,12 @@ Mobile browsers (like Opera mini, Chrome mobile, Safari mobile, Android browser 
 
 ## Changes
 
+## Changes
+
 | Version | Notes                                                            |
 |---------|------------------------------------------------------------------|
-                                    
+|   |                    |
+|   |                    |
 |     ... | ...                                                              |
 
 
